@@ -798,9 +798,9 @@ class simple_html_dom {
         'b'=>array('b'=>1),
     );
 
-    function __construct($str=null, $lowercase=true, $forceTagsClosed=true, $target_charset=DEFAULT_TARGET_CHARSET, $stripRN=true, $defaultBRText=DEFAULT_BR_TEXT) {
+    function __construct($str=null, $lowercase=true, $forceTagsClosed=true, $target_charset=DEFAULT_TARGET_CHARSET, $stripRN=true, $defaultBRText=DEFAULT_BR_TEXT, $is_file_name=false) {
         if ($str) {
-            if (preg_match("/^http:\/\//i",$str) || is_file($str))
+            if (preg_match("/^http:\/\//i",$str) /*|| is_file($str)*/)
                 $this->load_file($str);
             else
                 $this->load($str, $lowercase, $stripRN, $defaultBRText);
