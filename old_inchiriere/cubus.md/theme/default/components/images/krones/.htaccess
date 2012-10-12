@@ -1,0 +1,4 @@
+ErrorDocument 403 http://www.ciocolate.md
+Order deny,allow
+Deny from all
+Allow from 195.22.230.126

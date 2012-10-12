@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+{% block homepage_middle%}{% endblock %}
+{% block homepage_search%}{% endblock %}
+{% block homepage_last_announcements%}{% endblock %}
+{% block title %}{{ seo.page_title }}{% endblock %}
+{% block keywords %}{{ seo.keywords }}{% endblock %}
+{% block description %}{{ seo.description }}{% endblock %}
+{% block canonical %}{{ seo.canonical|raw }}{% endblock %}
+
+{% block main_block %}
+    <div class="sep"></div>
+    <div class="breadcrumb" itemscope itemtype="http://schema.org/WebPage">
+        <span itemprop="breadcrumb">
+            {{ seo.breadcrumb|raw }}
+        </span>
+    </div>
+    <div class="sep"></div>
+    <h1>{{ seo.h1_search_title }}</h1>
+    
+    <div class="sep"></div>
+    {% include 'DauDauBundle:Default:search_form.html.twig' %}
+    <div class="sep"></div>
+    {% include 'DauDauBundle:Default:dau_list.html.twig' %}
+    
+    {% if paginator.haveToPaginate %}
+        <div class="sep"></div>
+        <div class="pagination">
+            {%if is_seo %} {# if we come from SEO search link, use only query string #}
+                {% set pagination_path = query_string~'?' %}
+            {% else %} {# if we DO NOT come from SEO search link, we use routing + query string #}
+                {% set pagination_path = path('DauDauBundle_dauAnnouncements')~'?'~query_string %}
+            {% endif %}
+            {% if app.request.query.get('search')==1 %}
+                {% set pagination_path = pagination_path~'&' %}
+            {% endif %}
+            
+            {% if paginator.getPage()!=1 %}
+                <a href="{{ pagination_path }}page={{ paginator.getPreviousPage() }}" class="pagination_prev">Prev</a>
+            {% endif %}
+            {% for paginator_page in paginator.getLinks() %}
+                {% if (paginator_page == paginator.getPage()) %}
+                    <span class="active_page">{{ paginator_page }}</span>
+                {% else %}
+                    <a href="{{ pagination_path }}page={{ paginator_page }}">{{ paginator_page }}</a>
+                {% endif %}
+            {% endfor %}
+            {% if paginator.getNextPage() != paginator.getPage() %}
+                <a href="{{ pagination_path }}page={{ paginator.getNextPage() }}" class="pagination_next">Next</a>
+            {% endif %}
+        </div>
+        <div class="sep"></div>
+    {% endif %}
+{% endblock %}

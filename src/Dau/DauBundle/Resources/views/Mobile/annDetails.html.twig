@@ -1,0 +1,44 @@
+{% extends '::base_mobile.html.twig' %}
+
+{% block title %}{{ seo.page_title }}{% endblock %}
+{% block keywords %}{{ seo.keywords }}{% endblock %}
+{% block description %}{{ seo.description }}{% endblock %}
+
+{% block main_block %}
+    <div class="sep"></div>
+    <a href="javascript:;" onclick="history.back();return false;"><< Inapoi</a>
+    <div class="sep"></div>
+    <div itemscope itemtype="http://schema.org/ApartmentComplex">
+        <b>{{ dau_details.title|stripslashes }}</b>
+        <sup>{{ dau_details.added|date('Y-m-d H:i:s') }}</sup>
+        <div class="sep"></div>
+        {% for item in photos %}
+            <a href="/uploads/{{ item.getPhotoPath }}" class="gallery_photo"><img itemprop="photo" src="/uploads/th_{{ item.getPhotoPath }}"></a>
+        {% endfor %}
+        <div class="sep"></div>
+        <div class="ann_body" itemprop="description">
+            {{ dau_details.content|nl2br|raw|stripslashes }}
+        </div>
+        <div class="sep"></div>
+        <div class="sep"></div>
+        <span class="price_span bold">pret:</span> <span class="bold black font20">{{ dau_details.price }} &euro;</span>
+        <div class="sep"></div>
+        <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span class="price_span bold">adresa:</span> <span itemprop="streetAddress" class="bold black font20">Chisinau ({{ raioane[dau_details.raion] }}), {{ dau_details.address }}</span>
+        </span>
+        <div class="sep"></div>
+        <span class="price_span bold">contacte:</span> 
+        <span class="bold black font20">
+            {% if dau_details.fix %}
+                <span itemprop="telephone">
+                    <a href="tel:{{ dau_details.fix|filter_fix }}">{{ dau_details.fix }}</a>
+                </span>
+                &nbsp;
+                <span class="price_span">|</span>&nbsp;
+            {% endif %}
+            <span itemprop="telephone">
+                <a href="tel:{{ dau_details.mobil|filter_mobil }}">{{ dau_details.mobil }}</a>
+            </span>
+        </span>
+    </div>
+{% endblock %}

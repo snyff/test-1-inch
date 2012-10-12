@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ seo.page_title }}{% endblock %}
+{% block keywords %}{{ seo.keywords }}{% endblock %}
+{% block description %}{{ seo.description }}{% endblock %}
+
+{% block homepage_middle%}{% endblock %}
+{% block homepage_search%}{% endblock %}
+{% block homepage_last_announcements%}{% endblock %}
+
+{% block main_block %}
+<div class="sep"></div>
+<h1>Contactati-ne</h1>
+<div class="sep"></div>
+<form method="post" action="" id="add_new_form">
+    {{ form_errors(form) }}
+    <table width="100%">
+        <tr>
+            <td width="115">
+                <label for="contacts_form_subject" class="search_label">Subject:</label><br />
+                {{ form_widget(form.subject) }}
+                <div class="sep"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="contacts_form_content" class="search_label">Continut:</label><br />
+                {{ form_widget(form.content) }}
+                <div class="sep"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="contacts_form_email" class="search_label">Email:</label><br />
+                {{ form_widget(form.email) }}
+                <span class="font11 italic email_hint">
+                    pe acest email va vom raspunde daca este cazul (nu va fi publicat pe site)
+                </span>
+                <div class="sep"></div>
+            </td>
+        </tr>
+        
+    </table>
+    {{ form_rest(form) }}
+    <input type="submit" class="red_button_small" value="Trimite" />
+</form>
+
+{% endblock %}

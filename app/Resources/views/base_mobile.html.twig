@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+        <meta name="description" content="{% block description %}{% endblock %}" />
+        {% block canonical %}{% endblock %}
+        <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
+        {% block stylesheets %}
+            <link href="{{ asset('css/style_mobile.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </head>
+    <body>
+        {% 
+            set raioane = {'0': '---', '1': 'Centru', '2': 'Riscani', '3': 'Ciocana', '4': 'Buiucani', '5': 'Botanica', '6': 'Posta Veche', '7': 'Telecentru', '8': 'Aeroport', '9': 'Sculeni', '10': 'Durlesti' }
+        %}
+        <div class="main">
+            <a id="logo" href="{{ path('DauDauBundle_dauAnnouncements_mobile') }}"><img src="/images/logo.png" alt="gazda chisinau" /></a>
+        </div>
+        <div class="sep"></div>
+        <div class="sep"></div>
+        <div class="main">
+            {% block main_block %}
+                <div class="sep"></div>
+                <div class="c">
+                    <a href="{{ path('DauDauBundle_use_normal_site') }}">Versiunea normala a site-ului</a>
+                </div>
+            {% endblock %}
+        </div>
+    </body>
+    {% block javascripts_after %}{% endblock %}
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src=\'" + gaJsHost + "google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-10160390-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+</html>

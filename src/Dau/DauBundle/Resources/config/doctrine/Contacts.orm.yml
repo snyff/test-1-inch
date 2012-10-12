@@ -1,0 +1,33 @@
+Dau\DauBundle\Entity\Contacts:
+  type: entity
+  table: contacts
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    email:
+      type: string
+      length: 45
+      fixed: false
+      nullable: true
+    subject:
+      type: string
+      length: 500
+      fixed: false
+      nullable: true
+    content:
+      type: text
+      nullable: true
+    browser:
+      type: string
+      length: 1000
+      fixed: false
+      nullable: true
+    added:
+      type: datetime
+      nullable: false
+  lifecycleCallbacks: {  }

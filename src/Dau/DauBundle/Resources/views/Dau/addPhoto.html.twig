@@ -1,0 +1,15 @@
+<form action="" method="post" enctype="multipart/form-data" id="photo_form">
+    {% if error==1 %}
+        Fisierul nu este imagine.
+    {% endif %}
+    <span style="color:#666666;font-size: 12px;font-family:arial;">Alegeti imaginea:</span>
+    <input type="file" name="photo" onchange="document.getElementById('photo_form').submit();">
+    <div style=""></div>
+    {% for id, item in photos %}
+        <div style="float: left;text-align: center;margin-right: 10px;margin-top: 10px;">
+            <img src="/uploads/th_{{ item }}" />
+            <div style="height: 5px"></div>
+            <a href="?del_id={{ id }}" title="Stergeti aceasta imagine"><img src="/images/cross.png" /></a>
+        </div>
+    {% endfor %}
+</form>

@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ seo.page_title }}{% endblock %}
+{% block keywords %}{{ seo.keywords }}{% endblock %}
+{% block description %}{{ seo.description }}{% endblock %}
+
+{% block homepage_last_announcements %}
+    <div class="sep"></div>
+    <div>
+        <h1 class="left">Dau in chirie - ultimele adaugate:</h1>
+        <a href="{{ path('DauDauBundle_dauAnnouncements') }}" class="right">Toate anunturile >></a>
+        <div class="sep"></div>
+        {% include 'DauDauBundle:Default:dau_list.html.twig' %}
+        <a href="{{ path('DauDauBundle_dauAnnouncements') }}" class="right">Toate anunturile >></a>
+    </div>
+{% endblock %}

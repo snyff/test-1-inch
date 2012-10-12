@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ seo.page_title }}{% endblock %}
+{% block keywords %}{{ seo.keywords }}{% endblock %}
+{% block description %}{{ seo.description }}{% endblock %}
+
+{% block homepage_middle%}{% endblock %}
+{% block homepage_search%}{% endblock %}
+{% block homepage_last_announcements%}{% endblock %}
+
+{% block main_block %}
+<div class="sep"></div>
+<h1>Adaugare anunt</h1>
+<div class="sep"></div>
+Vreau sa:
+<br />
+<a href="{{ path('DauDauBundle_addDau') }}" class="homepage_add">dau in chirie</a>
+<br />
+<a href="{{ path('DauDauBundle_addInchiriez') }}" class="homepage_add">inchiriez</a>
+{% endblock %}

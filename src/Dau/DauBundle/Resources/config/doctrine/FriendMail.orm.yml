@@ -1,0 +1,33 @@
+Dau\DauBundle\Entity\FriendMail:
+  type: entity
+  table: friend_mail
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    fromName:
+      type: string
+      length: 50
+      fixed: false
+      nullable: false
+      column: from_name
+    email:
+      type: string
+      length: 50
+      fixed: false
+      nullable: false
+    friendName:
+      type: string
+      length: 50
+      fixed: false
+      nullable: false
+      column: friend_name
+    addDate:
+      type: datetime
+      nullable: false
+      column: add_date
+  lifecycleCallbacks: {  }

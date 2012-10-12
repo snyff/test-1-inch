@@ -1,0 +1,51 @@
+{% extends '::base_admin.html.twig' %}
+{% block javascripts %}
+    <script src="/js/jquery.lightbox-0.5.js" type="text/javascript"></script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/css/jquery.lightbox.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    <a href="javascript:;" onclick="history.back();return false;"><< Inapoi</a>
+    <form method="POST" action="{{ path('AdminAdminBundle_modify_dau') }}">
+        <label>Titlu:</label> <input type="text" style="width:500px;" name="ann[title]" value="{{ dau_details.title }}">
+        <br />
+        <label>Content:</label> <textarea name="ann[content]" style="width:500px; height:150px;">{{ dau_details.content|nl2br|raw }}</textarea>
+        <br />
+        <label>Price:</label> <input type="text" name="ann[price]" value="{{ dau_details.price }}">
+        <br />
+        <label>Adresa:</label> <input type="text" name="ann[address]" value="{{ dau_details.address }}">
+        <br />
+        <label>Telefon fix:</label> <input type="text" name="ann[fix]" value="{{ dau_details.fix }}">
+        <br />
+        <label>Telefon mobil:</label> <input type="text" name="ann[mobil]" value="{{ dau_details.mobil }}">
+        <input type="hidden" name="ann[id]" value="{{ dau_details.id }}">
+        <br />
+        <input type="submit" value="Salveaza" class="btn btn-primary">
+    </form>
+    <br />
+    <br />
+    Fotografii:
+    <br />
+    {% for item in photos %}
+    <div style="float:left;text-align: center">
+        <a href="/uploads/{{ item.getPhotoPath }}" class="gallery_photo"><img src="/uploads/th_{{ item.getPhotoPath }}"></a>
+        <div style="height:5px;"></div>
+        <a href="{{ path('AdminAdminBundle_delete_photo') }}?photo_id={{ item.id }}" class="">
+            <img src="/images/cross.png">
+        </a>
+    </div>
+    {% endfor %}
+    <script>
+        $(document).ready(function(){
+            $('.gallery_photo').lightBox({
+                imageLoading: '/images/lightbox-ico-loading.gif',
+                imageBtnClose: '/images/lightbox-btn-close.gif',
+                imageBtnPrev: '/images/lightbox-btn-prev.gif',
+                imageBtnNext: '/images/lightbox-btn-next.gif'
+           });
+        })
+    </script>
+{% endblock %}

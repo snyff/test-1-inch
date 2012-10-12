@@ -1,0 +1,35 @@
+Dau\DauBundle\Entity\FalseNumber:
+  type: entity
+  table: false_number
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    number:
+      type: string
+      length: 15
+      fixed: false
+      nullable: false
+    name:
+      type: string
+      length: 30
+      fixed: false
+      nullable: false
+    userid:
+      type: integer
+      unsigned: false
+      nullable: false
+    addDate:
+      type: datetime
+      nullable: false
+      column: add_date
+    ip:
+      type: string
+      length: 16
+      fixed: false
+      nullable: false
+  lifecycleCallbacks: {  }

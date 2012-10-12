@@ -1,0 +1,11 @@
+
+
+#Options +FollowSymlinks
+RewriteEngine on
+RewriteRule ^([a-zA-Z0-9_/?+-]+)/$ index.php?url_params=$1&%{QUERY_STRING} [L]
+RewriteRule ^([a-zA-Z0-9_/?+-]+)$ index.php?url_params=$1&%{QUERY_STRING} [L]
+RewriteRule captcha.jpg include/data/captcha/captcha.lib.php
+#RewriteRule ^([a-zA-Z0-9/?+-]+)/$ index.php?url_params=$1 [nc]
+#RewriteRule ^([a-zA-Z0-9/?+-]+)$ index.php?url_params=$1 [nc]
+AddType video/x-flv flv
+AddType video/x-flv .flv

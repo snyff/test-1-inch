@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/admin_style.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" />
+        {% endblock %}
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% 
+            set raioane = {'0': '---', '1': 'Centru', '2': 'Riscani', '3': 'Ciocana', '4': 'Buiucani', '5': 'Botanica', '6': 'Posta Veche', '7': 'Telecentru', '8': 'Aeroport', '9': 'Sculeni', '10': 'Durlesti' }
+        %}
+        {% if app.session.hasFlash('notice') %}
+            <div class="flash-notice alert alert-success">
+                {{ app.session.flash('notice') }}
+            </div>
+        {% endif %}
+        {% if app.session.hasFlash('error') %}
+            <div class="flash-danger alert alert-danger">
+                {{ app.session.flash('error') }}
+            </div>
+        {% endif %}
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div style="" class="span2">
+                    {% block left_menu %}
+                        <ul class="nav nav-pills nav-stacked">
+                            <li>
+                                <a href="{{ path('AdminAdminBundle_ann_settings') }}"><i class="icon-wrench"></i> Setari Anunturi</a> 
+                            </li>
+                            <li>
+                                <a href="javascript:;" onclick="$('#announcements_submenu').toggle();"><i class="icon-align-justify"></i> Anunturi</a> 
+                                <div style="display:block;" id="announcements_submenu">
+                                    <ul class="nav nav-pills nav-stacked" style="margin-bottom:0">
+                                        <li style="padding-left:32px;">
+                                            <a style="margin:0" href="{{ path('AdminAdminBundle_dau_list') }}">Dau in chirie</a> 
+                                        </li>
+                                        <li style="padding-left:32px;">
+                                            <a style="margin:0" href="{{ path('AdminAdminBundle_inchiriez_list') }}">Inchiriez</a> 
+                                        </li>
+                                        <li style="padding-left:32px;">
+                                            <a style="margin:0" href="{{ path('AdminAdminBundle_999_list') }}">Anunturi externe</a> 
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="{{ path('AdminAdminBundle_contacts_list') }}"><i class="icon-bullhorn"></i> Contacte</a> 
+                            </li>
+                            <li>
+                                <a href="?logout=1"><i class="icon-off"></i> Iesire</a> 
+                            </li>
+                        </ul>
+                    {% endblock %}
+                </div>
+                <div class="span10">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        {% block javascripts %}
+            <script src="{{ asset('bootstrap/js/bootstrap.js') }}" type="text/javascript"></script>
+        {% endblock %}
+        <script>
+            {% block inline %}
+            {% endblock %}
+        </script>
+    </body>
+</html>

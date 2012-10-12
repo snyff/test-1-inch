@@ -1,0 +1,15 @@
+Dau\DauBundle\Entity\Ch:
+  type: entity
+  table: ch
+  fields:
+    id:
+      id: true
+      type: bigint
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    statut:
+      type: integer
+      unsigned: false
+      nullable: false
+  lifecycleCallbacks: {  }

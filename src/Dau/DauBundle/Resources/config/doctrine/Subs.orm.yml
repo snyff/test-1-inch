@@ -1,0 +1,70 @@
+Dau\DauBundle\Entity\Subs:
+  type: entity
+  table: subs
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    raion:
+      type: integer
+      unsigned: false
+      nullable: false
+    nrRooms:
+      type: integer
+      unsigned: false
+      nullable: false
+      column: nr_rooms
+    fromPrice:
+      type: integer
+      unsigned: false
+      nullable: false
+      column: from_price
+    toPrice:
+      type: integer
+      unsigned: false
+      nullable: false
+      column: to_price
+    email:
+      type: string
+      length: 100
+      fixed: false
+      nullable: false
+    valuta:
+      type: string
+      length: 3
+      fixed: false
+      nullable: false
+    unsubs:
+      type: string
+      length: 150
+      fixed: false
+      nullable: false
+    dateSubs:
+      type: datetime
+      nullable: false
+      column: date_subs
+    etaj:
+      type: integer
+      unsigned: false
+      nullable: false
+    receiveStatus:
+      type: string
+      length: 1
+      fixed: false
+      nullable: false
+      column: receive_status
+    lang:
+      type: string
+      length: 3
+      fixed: false
+      nullable: false
+    ip:
+      type: string
+      length: 20
+      fixed: false
+      nullable: false
+  lifecycleCallbacks: {  }

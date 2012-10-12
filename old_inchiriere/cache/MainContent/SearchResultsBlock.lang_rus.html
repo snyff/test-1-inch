@@ -1,0 +1,49 @@
+1255534672-1255536472 cacheParamsInFile
+				
+			<div class="annonceH " >
+						
+				<div id="STL" class="annonceSTLH"></div>
+				<div id="SBL" class="annonceSBLH"></div>
+				<div id="STR" class="annonceSTRH"></div>
+				<div id="SBR" class="annonceSBRH"></div>
+			
+						<div class="textCenter textBold">Нет результатов.</div>
+			</div>
+		
+				<div class="textCenter"></div>
+				<br />
+		
+				<script>
+					function switchAnnOn(nr) {
+						$("#main"+nr).addClass("annonceH");
+						$("#main"+nr).height($("#main"+nr).height()-4)
+						$("#STL"+nr).removeClass("annonceSTL");
+						$("#STL"+nr).addClass("annonceSTLH");
+						
+						$("#SBL"+nr).removeClass("annonceSBL");
+						$("#SBL"+nr).addClass("annonceSBLH");
+						
+						$("#STR"+nr).removeClass("annonceSTR");
+						$("#STR"+nr).addClass("annonceSTRH");
+						
+						$("#SBR"+nr).removeClass("annonceSBR");
+						$("#SBR"+nr).addClass("annonceSBRH");
+					}
+					function switchAnnOff(nr) {
+						$("#main"+nr).removeClass("annonceH");
+						$("#main"+nr).height($("#main"+nr).height()+4);
+						$("#main"+nr).addClass("annonce");
+						$("#STL"+nr).addClass("annonceSTL");
+						$("#STL"+nr).removeClass("annonceSTLH");
+						
+						$("#SBL"+nr).addClass("annonceSBL");
+						$("#SBL"+nr).removeClass("annonceSBLH");
+						
+						$("#STR"+nr).addClass("annonceSTR");
+						$("#STR"+nr).removeClass("annonceSTRH");
+						
+						$("#SBR"+nr).addClass("annonceSBR");
+						$("#SBR"+nr).removeClass("annonceSBRH");
+					}
+				</script>
+			

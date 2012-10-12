@@ -1,0 +1,27 @@
+<ul class="listings">
+    {% for item in paginator %}
+        <li itemscope itemtype="http://schema.org/ApartmentComplex">
+            <a href="{{ path('DauDauBundle_ann_details_mobile', { 'id': item.id, 'title_slug':item.titleslug }) }}" class="" itemprop="url"><span itemprop="name">{{item.title|truncate(0, 40, '...')|no_title|stripslashes}}</span></a>
+            <br />
+            {{ raioane[item.raion] }}, {{ item.address }}
+            <br />
+            <span class="title">Pret:</span> {{ item.price }} &euro;
+            <br />
+            <span class="title">Camere:</span> {{ item.nrrooms }}
+            <br />
+            {% if item.fix %}
+                <span class="title">Fix:</span> <a href="tel:{{ item.fix|filter_fix }}">{{ item.fix|filter_fix }}</a>
+                <br />
+            {% endif %}
+            <span class="title">Mobil:</span> <a href="tel:{{ item.mobil|filter_mobil }}">{{ item.mobil|filter_mobil }}</a>
+            <br />
+            <span class="title">Adaugat:</span> {{item.added|date('Y-m-d')}}
+            <div class="sep"></div>
+            <a href="{{ path('DauDauBundle_ann_details_mobile', { 'id': item.id, 'title_slug':item.titleslug }) }}" class="more">Mai multe detalii&nbsp;&nbsp;<img src="/images/arrow.png" class="r mt3" /></a>
+        </li>
+    {% else %}
+        <li>
+            La moment nu avem nici un rezultat pentru aceasta cautare.
+        </li>
+    {% endfor %}
+</ul>

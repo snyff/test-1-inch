@@ -1,0 +1,24 @@
+Dau\DauBundle\Entity\Translations:
+  type: entity
+  table: translations
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    eng:
+      type: text
+      nullable: false
+    rom:
+      type: text
+      nullable: false
+    rus:
+      type: text
+      nullable: false
+    fra:
+      type: text
+      nullable: false
+  lifecycleCallbacks: {  }

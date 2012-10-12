@@ -1,0 +1,68 @@
+AdminAdminBundle_login:
+    pattern:  /administrator
+    defaults: { _controller: AdminAdminBundle:Default:index }
+    
+AdminAdminBundle_excute_login:
+    pattern:  /administrator/login
+    defaults: { _controller: AdminAdminBundle:Default:executeLogin }
+
+### DAU ###
+AdminAdminBundle_dau_list:
+    pattern:  /administrator/dau-list
+    defaults: { _controller: AdminAdminBundle:Default:dauList }
+    
+AdminAdminBundle_delete_dau:
+    pattern:  /administrator/delete-dau
+    defaults: { _controller: AdminAdminBundle:Default:deleteDau }
+    
+AdminAdminBundle_hide_dau:
+    pattern:  /administrator/hide-dau
+    defaults: { _controller: AdminAdminBundle:Default:hideDau }
+    
+AdminAdminBundle_current_time_dau:
+    pattern:  /administrator/set-current-time-dau
+    defaults: { _controller: AdminAdminBundle:Default:setCurrentTimeDau }
+    
+AdminAdminBundle_modify_dau:
+    pattern:  /administrator/modify-dau
+    defaults: { _controller: AdminAdminBundle:Default:modifyDau }
+    
+AdminAdminBundle_delete_photo:
+    pattern:  /administrator/delete-photo
+    defaults: { _controller: AdminAdminBundle:Default:deletePhoto }
+  
+AdminAdminBundle_ann_settings:
+    pattern:  /administrator/announcements-settings
+    defaults: { _controller: AdminAdminBundle:Default:annSettings }
+### end DAU ###
+
+### INCHIRIEZ ###
+AdminAdminBundle_inchiriez_list:
+    pattern:  /administrator/inchiriez-list
+    defaults: { _controller: AdminAdminBundle:Default:inchiriezList }
+    
+AdminAdminBundle_delete_inchiriez:
+    pattern:  /administrator/delete-inchiriez
+    defaults: { _controller: AdminAdminBundle:Default:deleteInchiriez }
+    
+### end INCHIRIEZ ###
+
+### CONTACTS ###
+AdminAdminBundle_contacts_list:
+    pattern:  /administrator/contacts-list
+    defaults: { _controller: AdminAdminBundle:Default:contactsList }
+    
+AdminAdminBundle_delete_contacts:
+    pattern:  /administrator/delete-contacts
+    defaults: { _controller: AdminAdminBundle:Default:deleteContacts }
+    
+### end CONTACTS ###
+
+### 999 ###
+AdminAdminBundle_999_list:
+    pattern:  /administrator/999-list
+    defaults: { _controller: AdminAdminBundle:Default:list999 }
+
+AdminAdminBundle_makler_list:
+    pattern:  /administrator/makler-list
+    defaults: { _controller: AdminAdminBundle:Default:listMakler }

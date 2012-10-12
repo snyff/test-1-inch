@@ -1,0 +1,15 @@
+Dau\DauBundle\Entity\Bots:
+  type: entity
+  table: bots
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    bot:
+      type: text
+      nullable: false
+  lifecycleCallbacks: {  }

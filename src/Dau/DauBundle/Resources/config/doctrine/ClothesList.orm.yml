@@ -1,0 +1,63 @@
+Dau\DauBundle\Entity\ClothesList:
+  type: entity
+  table: clothes_list
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    title:
+      type: string
+      length: 150
+      fixed: false
+      nullable: false
+    annonce:
+      type: text
+      nullable: false
+    articol:
+      type: string
+      length: 100
+      fixed: false
+      nullable: false
+    marime:
+      type: string
+      length: 15
+      fixed: false
+      nullable: false
+    color:
+      type: string
+      length: 15
+      fixed: false
+      nullable: false
+    fix:
+      type: string
+      length: 20
+      fixed: false
+      nullable: false
+    mobil:
+      type: string
+      length: 20
+      fixed: false
+      nullable: false
+    email:
+      type: string
+      length: 50
+      fixed: false
+      nullable: false
+    price:
+      type: integer
+      unsigned: false
+      nullable: false
+    currency:
+      type: string
+      length: 3
+      fixed: false
+      nullable: false
+    userid:
+      type: integer
+      unsigned: false
+      nullable: false
+  lifecycleCallbacks: {  }

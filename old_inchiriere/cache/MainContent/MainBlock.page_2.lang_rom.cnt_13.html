@@ -1,0 +1,161 @@
+1256059344-1256061144 cacheParamsInFile
+				<div class="content-main">
+					<div class="textBold colorBlue text24px textCenter marginBottom5">Dau in chirie</div>
+					
+			<div class="annonce cursorPointer" onMouseover="switchAnnOn(3);" id="main3" onMouseout="switchAnnOff(3);" id="main3" onClick="NewWindow('app?id=3', 770, 650); return false;">
+						
+				<div id="STL3" class="annonceSTL"></div>
+				<div id="SBL3" class="annonceSBL"></div>
+				<div id="STR3" class="annonceSTR"></div>
+				<div id="SBR3" class="annonceSBR"></div>
+			
+						
+					<table border="0" class="fullWidth">
+							<tr>
+								<td width="1" valign="top">
+									<img src="http://localhost/gazda/photos/no_photo.jpg">
+									</td>
+								<td valign="top" class="positionRelative">
+									<div class="annonceDetHeader">
+										<div class="annTimePosted">2009-08-12 21:01:53</div>
+										
+					<b>asdfasdf</b>
+					<br />
+										Camere: <span class="textBold">2</span>
+										&nbsp;&nbsp;
+										Sector: <span class="textBold">Riscani</span>
+										&nbsp;&nbsp;
+										Pret: <span class="textBold">343 eur</span>
+									</div>
+									<div class="annTitle">
+										
+									</div>
+									<br />
+									
+									<div class="annContacts">
+										Contacte: <span class="textBold">4343434</span>
+									</div>
+								</td>
+							</tr>
+						</table>
+			
+			</div>
+		<div class="separator"> </div>
+			<div class="annonce cursorPointer" onMouseover="switchAnnOn(2);" id="main2" onMouseout="switchAnnOff(2);" id="main2" onClick="NewWindow('app?id=2', 770, 750); return false;">
+						
+				<div id="STL2" class="annonceSTL"></div>
+				<div id="SBL2" class="annonceSBL"></div>
+				<div id="STR2" class="annonceSTR"></div>
+				<div id="SBR2" class="annonceSBR"></div>
+			
+						
+					<table border="0" class="fullWidth">
+							<tr>
+								<td width="1" valign="top">
+									<img src="http://localhost/gazda/photos/2_min.jpg">
+									</td>
+								<td valign="top" class="positionRelative">
+									<div class="annonceDetHeader">
+										<div class="annTimePosted">2009-08-12 20:58:19</div>
+										
+					<b>testte</b>
+					<br />
+										Camere: <span class="textBold">2</span>
+										&nbsp;&nbsp;
+										Sector: <span class="textBold">Buiucani</span>
+										&nbsp;&nbsp;
+										Pret: <span class="textBold">4545 eur</span>
+									</div>
+									<div class="annTitle">
+										
+									</div>
+									<br />
+									
+									<div class="annContacts">
+										Contacte: <span class="textBold">45435</span>
+									</div>
+								</td>
+							</tr>
+						</table>
+			
+			</div>
+		<div class="separator"> </div>
+			<div class="annonce cursorPointer" onMouseover="switchAnnOn(1);" id="main1" onMouseout="switchAnnOff(1);" id="main1" onClick="NewWindow('app?id=1', 770, 750); return false;">
+						
+				<div id="STL1" class="annonceSTL"></div>
+				<div id="SBL1" class="annonceSBL"></div>
+				<div id="STR1" class="annonceSTR"></div>
+				<div id="SBR1" class="annonceSBR"></div>
+			
+						
+					<table border="0" class="fullWidth">
+							<tr>
+								<td width="1" valign="top">
+									<img src="http://localhost/gazda/photos/1_min.jpg">
+									</td>
+								<td valign="top" class="positionRelative">
+									<div class="annonceDetHeader">
+										<div class="annTimePosted">2009-08-22 10:22:24</div>
+										
+					<b>Dau in chirie a@a.com</b>
+					<br />
+										Camere: <span class="textBold">2</span>
+										&nbsp;&nbsp;
+										Sector: <span class="textBold">Riscani</span>
+										&nbsp;&nbsp;
+										Pret: <span class="textBold">200 eur</span>
+									</div>
+									<div class="annTitle">
+										
+									</div>
+									<br />
+									
+									<div class="annContacts">
+										Contacte: <span class="textBold">22558741</span>
+									</div>
+								</td>
+							</tr>
+						</table>
+			
+			</div>
+		<div class="separator"> </div>
+					<div class="textCenter">
+					<a href="http://localhost/gazda/rom/rent?page=1" class="navBut textVerdana text14px textBold"> 1</a>
+				<span class="textVerdana text14px textBold">2</span></div>
+					<br />
+				</div>
+		
+				<script>
+					function switchAnnOn(nr) {
+						$("#main"+nr).addClass("annonceH");
+						
+						$("#STL"+nr).removeClass("annonceSTL");
+						$("#STL"+nr).addClass("annonceSTLH");
+						
+						$("#SBL"+nr).removeClass("annonceSBL");
+						$("#SBL"+nr).addClass("annonceSBLH");
+						
+						$("#STR"+nr).removeClass("annonceSTR");
+						$("#STR"+nr).addClass("annonceSTRH");
+						
+						$("#SBR"+nr).removeClass("annonceSBR");
+						$("#SBR"+nr).addClass("annonceSBRH");
+					}
+					function switchAnnOff(nr) {
+						$("#main"+nr).removeClass("annonceH");
+						
+						$("#main"+nr).addClass("annonce");
+						$("#STL"+nr).addClass("annonceSTL");
+						$("#STL"+nr).removeClass("annonceSTLH");
+						
+						$("#SBL"+nr).addClass("annonceSBL");
+						$("#SBL"+nr).removeClass("annonceSBLH");
+						
+						$("#STR"+nr).addClass("annonceSTR");
+						$("#STR"+nr).removeClass("annonceSTRH");
+						
+						$("#SBR"+nr).addClass("annonceSBR");
+						$("#SBR"+nr).removeClass("annonceSBRH");
+					}
+				</script>
+			

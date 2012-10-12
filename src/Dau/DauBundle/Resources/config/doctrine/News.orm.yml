@@ -1,0 +1,46 @@
+Dau\DauBundle\Entity\News:
+  type: entity
+  table: news
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    dateAdded:
+      type: datetime
+      nullable: false
+      column: date_added
+    shortTextRo:
+      type: string
+      length: 150
+      fixed: false
+      nullable: false
+      column: short_text_ro
+    longTextRo:
+      type: text
+      nullable: false
+      column: long_text_ro
+    shortTextRu:
+      type: string
+      length: 150
+      fixed: false
+      nullable: false
+      column: short_text_ru
+    longTextRu:
+      type: text
+      nullable: false
+      column: long_text_ru
+    shortTextEn:
+      type: string
+      length: 150
+      fixed: false
+      nullable: false
+      column: short_text_en
+    longTextEn:
+      type: text
+      nullable: false
+      column: long_text_en
+  lifecycleCallbacks: {  }

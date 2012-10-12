@@ -1,0 +1,32 @@
+{% extends '::base_admin.html.twig' %}
+{% block body %}
+    <h1>Setari anunturi</h1>
+    <form method="POST" action="{{ path('AdminAdminBundle_ann_settings') }}">
+        <b>La adaugarea toate anunturile sunt:</b>
+        <br/>
+        <input type="radio" name="accept_status" value="a" {%if ann_settings.default_accept_status == 'a' %}checked="checked"{% endif %}> automat vizibile pe site
+        <br/>
+        <input type="radio" name="accept_status" value="w" {%if ann_settings.default_accept_status == 'w' %}checked="checked"{% endif %}> puse in asteptare, se asteapta validarea moderatorului
+        <br/>
+        <br/>
+        <hr />
+        Cind se adauga un anunt urmatoarele adrese sa primeasca email de instiintare:
+        <br/>
+        <input type="text" name="emails" value="{{ ann_settings.notification_emails }}" style="width:500px;">
+        <br/>
+        <span style="font-style: italic;font-size: 11px">(Introduceti adresele de email prin virgula. Daca nu doriti sa fie trimis email lasati acest cimp gol)</span>
+        <br/>
+        <br/>
+        <hr />
+        Cind se completeaza pagina "Contacte" urmatoarele adrese sa primeasca email de instiintare:
+        <br/>
+        <input type="text" name="contacts_emails" value="{{ ann_settings.notification_emails_contacts }}" style="width:500px;">
+        <br/>
+        <span style="font-style: italic;font-size: 11px">(Introduceti adresele de email prin virgula. Daca nu doriti sa fie trimis email lasati acest cimp gol)</span>
+        
+        <br/>
+        <br/>
+        
+        <input type="submit" value="Salveaza" class="btn btn-primary">
+    </form>
+{% endblock %}

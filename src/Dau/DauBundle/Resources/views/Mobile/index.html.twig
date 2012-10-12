@@ -1,0 +1,31 @@
+{% extends '::base_mobile.html.twig' %}
+{% block title %}{{ seo.page_title }}{% endblock %}
+{% block keywords %}{{ seo.keywords }}{% endblock %}
+{% block description %}{{ seo.description }}{% endblock %}
+
+{% block main_block %}
+    {% include 'DauDauBundle:Mobile:dau_list.html.twig' %}
+    {% if paginator.haveToPaginate %}
+        <div class="pagination">
+            {%if is_seo %} {# if we come from SEO search link, use only query string #}
+                {% set pagination_path = query_string~'?' %}
+            {% else %} {# if we DO NOT come from SEO search link, we use routing + query string #}
+                {% set pagination_path = path('DauDauBundle_dauAnnouncements_mobile')~'?'~query_string %}
+            {% endif %}
+            {% if app.request.query.get('search')==1 %}
+                {% set pagination_path = pagination_path~'&' %}
+            {% endif %}
+            <div class="sep"></div>
+            <div class="sep"></div>
+            {% if paginator.getNextPage() != paginator.getPage() %}
+                <a href="{{ pagination_path }}page={{ paginator.getNextPage() }}" class="more w125 r">Next<img src="/images/arrow.png" class="r mt3" /></a>
+            {% endif %}
+
+            {% if paginator.getPage()!=1 %}
+                <a href="{{ pagination_path }}page={{ paginator.getPreviousPage() }}" class="more w125"><img src="/images/arrow_left.png" class="l mt3" />Prev</a>
+            {% endif %}
+        </div>
+        <div class="sep"></div>
+    {% endif %}
+    {{ parent() }}
+{% endblock %}

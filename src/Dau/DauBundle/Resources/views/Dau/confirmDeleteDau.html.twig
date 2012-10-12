@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+{% block homepage_middle%}{% endblock %}
+{% block homepage_search%}{% endblock %}
+{% block homepage_last_announcements%}{% endblock %}
+
+{% block main_block %}
+    <div class="sep"></div>
+    {% if found %}
+        Va rugam sa confirmati ca doriti sa stergeti anuntul cu titlul: "{{ ann.title|raw }}" postat pe data {{ ann.added|date("Y-m-d H:i:s") }}
+        <br />
+        <a href="?confirm=1">Confirm</a>&nbsp;&nbsp;<a href="{{ path('DauDauBundle_homepage') }}">Renunt</a>
+    {% else %}
+        Anuntul cu asemenea id a fost sters sa nu exista in baza noastra de date.
+    {% endif %}
+{% endblock %}

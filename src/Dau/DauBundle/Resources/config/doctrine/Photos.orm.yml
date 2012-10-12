@@ -1,0 +1,26 @@
+Dau\DauBundle\Entity\Photos:
+  type: entity
+  table: photos
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    dauId:
+      type: integer
+      unsigned: false
+      nullable: false
+      column: dau_id
+    photoPath:
+      type: string
+      length: 150
+      fixed: false
+      nullable: false
+      column: photo_path
+    added:
+      type: datetime
+      nullable: false
+  lifecycleCallbacks: {  }

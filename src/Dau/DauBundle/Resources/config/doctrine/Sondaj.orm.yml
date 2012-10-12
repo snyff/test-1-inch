@@ -1,0 +1,27 @@
+Dau\DauBundle\Entity\Sondaj:
+  type: entity
+  table: sondaj
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    text:
+      type: text
+      nullable: false
+    ip:
+      type: string
+      length: 16
+      fixed: false
+      nullable: false
+    browser:
+      type: text
+      nullable: false
+    addDate:
+      type: datetime
+      nullable: false
+      column: add_date
+  lifecycleCallbacks: {  }

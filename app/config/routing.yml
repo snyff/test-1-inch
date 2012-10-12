@@ -1,0 +1,16 @@
+AdminAdminBundle:
+    resource: "@AdminAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+DauDauBundle:
+    resource: "@DauDauBundle/Resources/config/routing.yml"
+    prefix:   /
+
+DauDauBundle_mobile:
+    resource: "@DauDauBundle/Resources/config/routing_mobile.yml"
+    prefix:   /mobile
+
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal

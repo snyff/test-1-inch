@@ -1,0 +1,3 @@
+1000:GLOBAL:Free Instant Quote
+1001:GLOBAL:You can have a free instant quote for your translation in seconds and even pay online.
+1002:GLOBAL:

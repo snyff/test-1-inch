@@ -1,0 +1,27 @@
+Dau\DauBundle\Entity\Adm:
+  type: entity
+  table: adm
+  repositoryClass: Dau\DauBundle\Repository\AdmRepository
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    nick:
+      type: string
+      length: 15
+      fixed: false
+      nullable: false
+    pass:
+      type: string
+      length: 15
+      fixed: false
+      nullable: false
+    master:
+      type: integer
+      unsigned: false
+      nullable: false
+  lifecycleCallbacks: {  }

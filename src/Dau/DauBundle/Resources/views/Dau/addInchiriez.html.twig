@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+{% block homepage_middle%}{% endblock %}
+{% block homepage_search%}{% endblock %}
+{% block homepage_last_announcements%}{% endblock %}
+
+{% block main_block %}
+<div class="sep"></div>
+<h1>Adauga anunt: Inchiriez</h1>
+<div class="sep"></div>
+<form method="post" action="" id="add_new_form">
+    {{ form_errors(form) }}
+    <table width="100%">
+        <tr>
+            <td width="115">
+                <label for="dau_form_title" class="search_label">Title:</label><br />
+                {{ form_widget(form.title) }}
+                <div class="sep"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="dau_form_content" class="search_label">Continut:</label><br />
+                {{ form_widget(form.annonce) }}
+                <div class="sep"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="dau_form_price" class="search_label">Pret:</label><br />
+                {{ form_widget(form.price) }} <span style="font-size: 13px">euro</span>
+                <div class="sep"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="float:left;">
+                    <label for="dau_form_fix" class="search_label">Telefon Fix:</label><br />
+                    {{ form_widget(form.fix) }}
+                </div>
+                <div style="float:left; margin-left: 10px;">
+                    <label for="dau_form_mobil" class="search_label">Telefon Mobil:</label><br />
+                    {{ form_widget(form.mobil) }}
+                </div>
+                <div style="float:left; margin-left: 10px;">
+                    <label for="dau_form_email" class="search_label">Email:</label><br />
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="sep"></div>
+            </td>
+        </tr>
+    </table>
+    {{ form_rest(form) }}
+    <input type="submit" class="red_button_small" value="Salveaza" />
+</form>
+
+{% endblock %}

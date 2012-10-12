@@ -1,0 +1,40 @@
+Dau\DauBundle\Entity\Stats:
+  type: entity
+  table: stats
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    page:
+      type: string
+      length: 40
+      fixed: false
+      nullable: false
+    ip:
+      type: string
+      length: 16
+      fixed: false
+      nullable: false
+    time:
+      type: datetime
+      nullable: false
+    browser:
+      type: string
+      length: 100
+      fixed: false
+      nullable: false
+    url:
+      type: string
+      length: 150
+      fixed: false
+      nullable: true
+    referer:
+      type: string
+      length: 250
+      fixed: false
+      nullable: false
+  lifecycleCallbacks: {  }

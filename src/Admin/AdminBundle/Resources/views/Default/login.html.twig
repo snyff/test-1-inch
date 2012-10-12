@@ -1,0 +1,28 @@
+{% extends '::base_admin.html.twig' %}
+{% block left_menu %}{% endblock %}
+
+{% block body %}
+    <div class="">
+        <form method="post" action="{{ path('AdminAdminBundle_excute_login') }}">
+            <table align="center">
+                <tr>
+                    <td>
+                        <label for="">User</label>
+                        <input type="text" name="user" required="required">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="">Password</label>
+                        <input type="password" name="password" required="required">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" class="btn btn-primary" value="Enter">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+{% endblock %}

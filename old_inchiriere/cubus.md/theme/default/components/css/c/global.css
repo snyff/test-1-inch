@@ -1,0 +1,175 @@
+/* Adauga Fisier */
+thead.fixedHeader th {
+background:#D7E5F1 none repeat scroll 0%;
+border-color:#A5B9CA rgb(165, 185, 202) rgb(165, 185, 202) -moz-use-text-color;
+border-style:solid solid solid none;
+border-width:1px 1px 1px medium;
+color:#274057;
+font-family:Arial,sans-serif;
+font-size:12px;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:bold;
+line-height:normal;
+padding:4px 3px;
+text-align:left;
+}
+tfoot.fixedFooter tr {
+height:22px;
+}
+tfoot.fixedFooter td {
+background:#A9A9A9 none repeat scroll 0%;
+font-family:Arial,sans-serif;
+font-size:12px;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:normal;
+line-height:18px;
+}
+tbody.scrollContent tr {
+height:19px;
+}
+tbody.scrollContent td, tbody.scrollContent tr.oddRow td {
+background:#FFFFFF none repeat scroll 0%;
+border-bottom:1px solid #A5B9CA;
+border-left:medium none;
+border-right:1px solid #A5B9CA;
+color:#363634;
+font-family:Arial,sans-serif;
+font-size:12px;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:normal;
+height:18px;
+line-height:18px;
+padding:1px 3px;
+}
+tbody.scrollContent tr.evenRow td {
+background:#F8F8F8 none repeat scroll 0%;
+border-bottom:1px solid #A5B9CA;
+border-left:medium none;
+border-right:1px solid #A5B9CA;
+color:#363634;
+font-family:Arial,sans-serif;
+font-size:12px;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:normal;
+height:18px;
+line-height:18px;
+padding:1px 3px;
+}
+tr.totalRow td {
+background:transparent none repeat scroll 0%;
+border-bottom:1px solid #A5B9CA;
+border-left:1px solid #A5B9CA;
+border-right:1px solid #A5B9CA;
+color:#363634;
+font-family:Arial,sans-serif;
+font-size:12px;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:bold;
+height:18px;
+line-height:18px;
+padding:1px 3px;
+}
+tr.totalRow td + td {
+background:#FFF7E6 none repeat scroll 0%;
+border-left:medium none;
+border-right:1px solid #A5B9CA !important;
+}
+thead.fixedHeader th {
+border-left:1px solid #A5B9CA;
+width:222px;
+}
+thead.fixedHeader th + th {
+border-left:medium none !important;
+width:149px;
+}
+thead.fixedHeader th + th + th {
+width:149px;
+}
+thead.fixedHeader th + th + th {
+width:149px;
+}
+tbody.scrollContent td {
+border-left:1px solid #A5B9CA !important;
+width:222px;
+}
+tbody.scrollContent td + td {
+border-left:medium none !important;
+width:149px;
+}
+tbody.scrollContent td + td + td {
+width:149px;
+}
+tbody.scrollContent td + td + td {
+width:149px;
+}
+
+ 
+
+ 
+
+
+#bgBox {
+	background:       #cccccc;
+	filter:			  alpha(opacity=50);
+	-moz-opacity:	  .50;
+	opacity:		  .50;
+	position:         absolute;
+	top:              0;
+	left:             0;
+	margin-left:      0;
+	margin-top:       0;
+	display:          none;
+	border:           0px #0000FF solid;	
+}
+
+#msgContactBox {
+	border:           1px solid #ccc;
+	background-color: #fff;
+	position:         absolute;
+	top:              0;
+	left:             0;
+	margin-left:      0;
+	margin-top:       0;
+	padding:          2px;
+	width:            1px;
+	height:           1px;
+	display:          none;
+}
+
+
+#msgPayBox{
+	border:           1px solid #ccc;
+	background-color: #fff;
+	position:         absolute;
+	top:              0;
+	left:             0;
+	margin-left:      0;
+	margin-top:       0;
+	padding:          2px;
+	width:            1px;
+	height:           1px;
+	display:          none;
+}
+
+
+
+
+ 
+
+
+

@@ -1,0 +1,125 @@
+DauDauBundle_homepage:
+    pattern:  /
+    defaults: { _controller: DauDauBundle:Dau:homepage }
+
+DauDauBundle_ann_details:
+    pattern: /gazda-md-chirie-in-chisinau/{id}/{title_slug}
+    defaults: { _controller: DauDauBundle:Dau:annDetails }
+    requirements:
+      _method: GET
+      id: \d+
+
+DauDauBundle_ann_details_ru:
+    pattern: /сниму/{id}/{title_slug}
+    defaults: { _controller: DauDauBundle:Dau:annDetails }
+    requirements:
+      _method: GET
+      id: \d+
+
+DauDauBundle_inchiriez_details:
+    pattern: /inchiriez-details/{id}/{title_slug}
+    defaults: { _controller: DauDauBundle:Dau:inchiriezDetails }
+    requirements:
+      _method: GET
+      id: \d+
+
+DauDauBundle_addDau:
+    pattern:  /dau-gazda-in-chirie
+    defaults: { _controller: DauDauBundle:Dau:addDau }
+
+DauDauBundle_addInchiriez:
+    pattern:  /add-inchiriez
+    defaults: { _controller: DauDauBundle:Dau:addInchiriez }
+
+DauDauBundle_addAnnouncement:
+    pattern:  /add-announcement
+    defaults: { _controller: DauDauBundle:Dau:addAnnouncement }
+
+DauDauBundle_thankyou:
+    pattern:  /thankyou
+    defaults: { _controller: DauDauBundle:Dau:thankYou }
+
+DauDauBundle_dauAnnouncements:
+    pattern:  /gazda-md-chirie-chisinau
+    defaults: { _controller: DauDauBundle:Dau:dauAnnouncements }
+
+DauDauBundle_inchiriezAnnouncements:
+    pattern:  /anunturi-inchiriez
+    defaults: { _controller: DauDauBundle:Dau:inchiriezAnnouncements }
+
+DauDauBundle_add_photos:
+    pattern:  /add-photos
+    defaults: { _controller: DauDauBundle:Dau:addPhotos }
+
+DauDauBundle_delete_dau:
+    pattern:  /sterge-anunt/{secret_hash}
+    defaults: { _controller: DauDauBundle:Dau:deleteDau }
+
+DauDauBundle_contacts:
+    pattern:  /contacts
+    defaults: { _controller: DauDauBundle:Dau:contacts }
+
+DauDauBundle_about_us:
+    pattern:  /about-us
+    defaults: { _controller: DauDauBundle:Dau:about }
+
+DauDauBundle_rules:
+    pattern:  /rules
+    defaults: { _controller: DauDauBundle:Dau:rules }
+
+DauDauBundle_accept_ann_admin:
+    pattern:  /accept-ann-admin
+    defaults: { _controller: DauDauBundle:Dau:acceptDeleteAnnAdmin }
+    
+### SEO search ###
+DauDauBundle_dau_list_SEO_sector:
+    pattern:  /gazda-{sector}
+    defaults: { _controller: DauDauBundle:Dau:dauAnnouncements }
+    requirements:
+      _method: GET
+      sector: \w+
+      
+DauDauBundle_dau_list_SEO_camere:
+    pattern:  /gazda-{camere}-camere
+    defaults: { _controller: DauDauBundle:Dau:dauAnnouncements }
+    requirements:
+      _method: GET
+      camere: \d+
+      
+DauDauBundle_dau_list_SEO_camere_sector:
+    pattern:  /gazda-{sector}-{camere}-camere
+    defaults: { _controller: DauDauBundle:Dau:dauAnnouncements }
+    requirements:
+      _method: GET
+      camere: \d+
+      sector: \w+
+      
+sitemap:
+    pattern:  /sitemap.xml
+    defaults: { _controller: DauDauBundle:Dau:sitemap }
+    
+DauDauBundle_use_normal_site:
+    pattern:  /use-normal
+    defaults: { _controller: DauDauBundle:Dau:useNormalSite }
+####### REMOVE UNUSED PAGES FROM LAST DESIGN; start: 08/10/2012 #######
+page1:
+  pattern: /rom/{name}
+  defaults: { _controller: DauDauBundle:Dau:pages410 }
+  requirements:
+        name: ".+"
+
+page2:
+  pattern: /rus/{name}
+  defaults: { _controller: DauDauBundle:Dau:pages410 }
+  requirements:
+        name: ".+"
+
+page3:
+  pattern: /eng/{name}
+  defaults: { _controller: DauDauBundle:Dau:pages410 }
+  requirements:
+        name: ".+"
+
+page4:
+  pattern: /compare.swf
+  defaults: { _controller: DauDauBundle:Dau:pages410 }

@@ -1,0 +1,10 @@
+DauDauBundle_dauAnnouncements_mobile:
+    pattern:  /
+    defaults: { _controller: DauDauBundle:Dau:dauAnnouncements }
+
+DauDauBundle_ann_details_mobile:
+    pattern: /gazda-md-chirie-in-chisinau/{id}/{title_slug}
+    defaults: { _controller: DauDauBundle:Dau:annDetails }
+    requirements:
+      _method: GET
+      id: \d+

@@ -1,0 +1,28 @@
+Dau\DauBundle\Entity\Improvement:
+  type: entity
+  table: improvement
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    userid:
+      type: integer
+      unsigned: false
+      nullable: false
+    content:
+      type: text
+      nullable: false
+    addDate:
+      type: datetime
+      nullable: false
+      column: add_date
+    ip:
+      type: string
+      length: 16
+      fixed: false
+      nullable: false
+  lifecycleCallbacks: {  }

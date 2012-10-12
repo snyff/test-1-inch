@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+{% block homepage_middle%}{% endblock %}
+{% block homepage_search%}{% endblock %}
+{% block homepage_last_announcements%}{% endblock %}
+
+{% block main_block %}
+{% set message = message|default('') %}
+<div class="sep"></div>
+{% if message=='secret_hash_deleted' %}
+    <h1>Anuntul Dvs a fost sters.</h1>
+    <div class="sep"></div>
+    <a href="{{ path('DauDauBundle_addAnnouncement') }}">Adauga alt anunt</a>
+{% elseif message=='' and app.request.get('message') == 'contact_message_sent' %}
+    <h1>Va multumim pentru mesaj!</h1>
+{% else %}
+    <h1>Va multumim! Anuntul Dvs va aparea online indata dupa ce va fi validat.</h1>
+{% endif %}
+
+{% endblock %}

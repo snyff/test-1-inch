@@ -1,0 +1,65 @@
+Dau\DauBundle\Entity\Users:
+  type: entity
+  table: users
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    pass:
+      type: string
+      length: 15
+      fixed: false
+      nullable: false
+    ip:
+      type: string
+      length: 16
+      fixed: false
+      nullable: false
+    timp:
+      type: datetime
+      nullable: false
+    email:
+      type: string
+      length: 50
+      fixed: false
+      nullable: false
+    lastName:
+      type: string
+      length: 30
+      fixed: false
+      nullable: false
+      column: last_name
+    firstName:
+      type: string
+      length: 20
+      fixed: false
+      nullable: false
+      column: first_name
+    activated:
+      type: integer
+      unsigned: false
+      nullable: false
+    confirmCode:
+      type: string
+      length: 50
+      fixed: false
+      nullable: false
+      column: confirm_code
+    dff:
+      type: bigint
+      nullable: false
+    fastUser:
+      type: integer
+      unsigned: false
+      nullable: false
+      column: fast_user
+    lang:
+      type: string
+      length: 3
+      fixed: false
+      nullable: false
+  lifecycleCallbacks: {  }

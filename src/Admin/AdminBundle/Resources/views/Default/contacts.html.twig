@@ -1,0 +1,55 @@
+{% extends '::base_admin.html.twig' %}
+
+{% block body %}
+    <div class="sep"></div>
+    <h1>Contacte</h1>
+    <div class="sep"></div>
+    <table class="table table-hover" cellpadding="0" cellspacing="0">
+        <tr>
+            <th>
+                Email
+            </th>
+            <th>
+                Subject
+            </th>
+            <th>
+                Content
+            </th>
+            <th>
+                Data Adaugarii
+            </th>
+            <th>
+                Operatiuni
+            </th>
+        </tr>
+        {% for item in contact_list %}
+            <tr>
+                <td>
+                    {{ item.email }}
+                </td>
+                <td>
+                    {{ item.subject }}
+                </td>
+                <td>
+                    <span style="font-size: 11px;">{{ item.content }}</span>
+                </td>
+                <td>
+                    {{ item.added|date('Y-m-d') }}
+                </td>
+                <td width="155">
+                    <ul class="nav nav-pills" style="margin:0">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+                                Options
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('AdminAdminBundle_delete_contacts') }}?contact_id={{ item.id }}" onclick="return confirm('Confirmati?')"><i class="icon-trash"></i>&nbsp;Sterge</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

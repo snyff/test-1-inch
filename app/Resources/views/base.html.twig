@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+        <meta name="description" content="{% block description %}{% endblock %}" />
+        {% block canonical %}{% endblock %}
+        {% block stylesheets %}
+            <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+        {% block javascripts %}
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+        {% endblock %}
+    </head>
+    <body>
+        <div class="top_menu_container">
+            <div class="top_menu_logo general_width">
+                <a id="logo" href="{{ path('DauDauBundle_homepage') }}"><img src="/images/logo.png" alt="gazda chisinau" /></a>
+                {% block main_menu%}
+                    <div class="top_menu">
+                        <ul>
+                            <li>
+                                <a href="{{ path('DauDauBundle_homepage') }}" {% if app.request.attributes.get('_route') == 'DauDauBundle_homepage' %}{{ 'class="active_main_menu"' }}{% endif %}>Acasa</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('DauDauBundle_addAnnouncement') }}" {% if app.request.attributes.get('_route') == 'DauDauBundle_addAnnouncement' or app.request.attributes.get('_route') == 'DauDauBundle_addDau' or app.request.attributes.get('_route') == 'DauDauBundle_addInchiriez' %}{{ 'class="active_main_menu"' }}{% endif %}>Adauga anunt</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('DauDauBundle_dauAnnouncements') }}" {% if app.request.attributes.get('_route') == 'DauDauBundle_dauAnnouncements' or app.request.attributes.get('_route') == 'DauDauBundle_ann_details' %}{{ 'class="active_main_menu"' }}{% endif %}>Dau in chirie</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('DauDauBundle_inchiriezAnnouncements') }}" {% if app.request.attributes.get('_route') == 'DauDauBundle_inchiriezAnnouncements' or app.request.attributes.get('_route') == 'DauDauBundle_inchiriez_details' %}{{ 'class="active_main_menu"' }}{% endif %}>Inchiriez</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('DauDauBundle_contacts') }}" {% if app.request.attributes.get('_route') == 'DauDauBundle_contacts' or app.request.attributes.get('_route') == 'DauDauBundle_contacts' %}{{ 'class="active_main_menu"' }}{% endif %}>Contacte</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('DauDauBundle_about_us') }}" {% if app.request.attributes.get('_route') == 'DauDauBundle_about_us' or app.request.attributes.get('_route') == 'DauDauBundle_about_us' %}{{ 'class="active_main_menu"' }}{% endif %}>Despre noi</a>
+                            </li>
+                            {#<li>
+                                <a href="">Login</a>
+                            </li>#}
+                        </ul>
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+        {% 
+            set raioane = {'0': '---', '1': 'Centru', '2': 'Riscani', '3': 'Ciocana', '4': 'Buiucani', '5': 'Botanica', '6': 'Posta Veche', '7': 'Telecentru', '8': 'Aeroport', '9': 'Sculeni', '10': 'Durlesti' }
+        %}
+        <div class="container general_width">
+            {% block homepage_middle%}
+                <div class="homepage_middle">
+                    <div class="house"></div>
+                    <div class="homepage_big_text">
+                        <span class="big_verdana">Pentru cei care doresc sa inchirieze sau <br /> sa dea in chirie apartamente.</span>
+                        <div class="sep"></div>
+                        <div class="sep"></div>
+                        <span class="grey_verdana">Plasarea anunturilor pe site este <b>GRATIS!</b></span>
+                        <div class="sep"></div>
+                        <div class="sep"></div>
+                        <div class="sep"></div>
+                        <div class="sep"></div>
+                        <div class="sep"></div>
+                        <span class="add_new_div_" id="add_new_div_">
+                            <a href="javascript:;" class="red_button" id="add_new_button" onmouseover="showAdd();return false;">Adauga anuntul tau acum!&nbsp;<img src="../images/checked.png"></a>
+                            <div class="add_new_div" id="add_new_div">
+                                Vreau sa:
+                                <br />
+                                <a href="{{ path('DauDauBundle_addDau') }}" class="homepage_add">dau in chirie</a>
+                                <br />
+                                <a href="{{ path('DauDauBundle_addInchiriez') }}" class="homepage_add">inchiriez</a>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <script>
+                    function showAdd() {
+                        $('#add_new_button').addClass('red_button_hover');
+                        $('#add_new_div').show();
+                    }
+                    $(document).ready(function(){
+                        $('#add_new_div_').mouseout(function(e){
+                            if (!e) var e = window.event;
+                            var reltg = (e.relatedTarget) ? e.relatedTarget : e.toElement;
+                            while (reltg.tagName != 'BODY'){
+                                if (reltg.id == this.id)return;
+                                reltg = reltg.parentNode;
+                            }
+                            $('#add_new_div').hide();
+                            $('#add_new_button').removeClass('red_button_hover');
+                        }); 
+                    });
+                </script>
+            {% endblock %}
+            {% block homepage_search %}
+                {% include 'DauDauBundle:Default:search_form.html.twig' %}
+            {% endblock %}
+            {% block homepage_last_announcements %}{% endblock %}
+            {% block main_block %}{% endblock %}
+            <div class="sep"></div>
+            <div class="bottom_line"></div>
+            <div class="footer_text">
+                inchiriere.md - Toate drepturile rezervate, <a href="{{ path('DauDauBundle_rules') }}">Reguli</a>
+            </div>
+        </div>
+    </body>
+    {% block javascripts_after %}{% endblock %}
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src=\'" + gaJsHost + "google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-10160390-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+    <script type="text/javascript">
+	    top20_id="inchirieremd";
+	    top20_showimg=0;
+    </script>
+    <script src="http://www.top20.md/client/scripts/stats.js" type="text/javascript"></script>
+    <noscript>
+	    <a href="http://www.top20.md/?site=inchirieremd"><img border="0" alt="top20.md" src="http://v1.stream.top20.md/?top20_id=inchirieremd"/></a> 
+    </noscript>
+</html>

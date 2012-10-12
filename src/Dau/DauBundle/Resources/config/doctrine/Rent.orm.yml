@@ -1,0 +1,48 @@
+Dau\DauBundle\Entity\Rent:
+  type: entity
+  table: rent
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    title:
+      type: string
+      length: 150
+      fixed: false
+      nullable: false
+    annonce:
+      type: text
+      nullable: false
+    price:
+      type: integer
+      unsigned: false
+      nullable: false
+    fix:
+      type: string
+      length: 13
+      fixed: false
+      nullable: false
+    mobil:
+      type: string
+      length: 13
+      fixed: false
+      nullable: false
+    email:
+      type: string
+      length: 70
+      fixed: false
+      nullable: false
+    added:
+      type: datetime
+      nullable: false
+    acceptStatus:
+      type: string
+      length: 1
+      fixed: false
+      nullable: false
+      column: accept_status
+  lifecycleCallbacks: {  }

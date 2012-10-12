@@ -1,0 +1,33 @@
+Dau\DauBundle\Entity\Refused:
+  type: entity
+  table: refused
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    appId:
+      type: integer
+      unsigned: false
+      nullable: false
+      column: app_id
+    userid:
+      type: integer
+      unsigned: false
+      nullable: false
+    refMess:
+      type: text
+      nullable: false
+      column: ref_mess
+    addDate:
+      type: datetime
+      nullable: false
+      column: add_date
+    deleted:
+      type: integer
+      unsigned: false
+      nullable: false
+  lifecycleCallbacks: {  }

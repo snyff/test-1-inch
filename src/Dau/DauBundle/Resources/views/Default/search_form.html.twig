@@ -1,0 +1,58 @@
+<div class="app_search">
+    {% 
+        set rooms = {'0': '---', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5'}
+    %}
+    {% 
+        set floor = {'0': '---', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5'}
+    %}
+    <form method="get" action="{{ path('DauDauBundle_dauAnnouncements') }}" id="app_search">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td style="padding-bottom:6px">
+                    <span class="big_verdana padding_search_big">Cautare</span>
+                </td>
+                <td valign="middle" class="search_label">
+                    Sector:&nbsp;
+                </td>
+                <td>
+                    <select name="sector" class="width140">
+                        {% for key, value in raioane %}
+                            <option value="{{ key }}" {% if key==app.request.query.get('sector') %}{{ 'selected="selected"' }}{% endif %}>{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td valign="middle" class="search_label">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Numar odai:&nbsp;
+                </td>
+                <td>
+                    <select name="nr_odai" class="width70">
+                        {% for key, value in rooms %}
+                            <option value="{{ key }}" {% if key==app.request.query.get('nr_odai') %}{{ 'selected="selected"' }}{% endif %}>{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td valign="middle" class="search_label">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Etaj:&nbsp;
+                </td>
+                <td>
+                    <select name="etaj" class="width60">
+                        <option value="">---</option>
+                        {% for i in range(1, 18) %}
+                            <option value="{{ i }}" {% if i==app.request.query.get('etaj') %}{{ 'selected="selected"' }}{% endif %}>{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td valign="middle" class="search_label">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Pret:&nbsp;
+                </td>
+                <td>
+                    <input type="text" id="price" style="width:50px" name="pret"> <span class="search_label">EURO</span>
+                </td>
+                <td>
+                    &nbsp;<a href="javascript:;" onclick="$('#app_search').submit();" class="red_button_small margin_button">Cauta acum&nbsp;<img src="../images/search.png">&nbsp;</a>
+                </td>
+            </tr>
+        </table>
+        <input type="hidden" name="search" value="1">
+    </form>
+</div>

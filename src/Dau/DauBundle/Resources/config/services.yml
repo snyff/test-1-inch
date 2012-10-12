@@ -1,0 +1,7 @@
+parameters:
+#    dau_dau.example.class: Dau\DauBundle\Example
+
+services:
+#    dau_dau.example:
+#        class: %dau_dau.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

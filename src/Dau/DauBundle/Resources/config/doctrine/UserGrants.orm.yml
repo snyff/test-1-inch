@@ -1,0 +1,44 @@
+Dau\DauBundle\Entity\UserGrants:
+  type: entity
+  table: user_grants
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    userid:
+      type: integer
+      unsigned: false
+      nullable: false
+    stats:
+      type: integer
+      unsigned: false
+      nullable: false
+    admins:
+      type: integer
+      unsigned: false
+      nullable: false
+    list:
+      type: integer
+      unsigned: false
+      nullable: false
+    advertising:
+      type: integer
+      unsigned: false
+      nullable: false
+    translations:
+      type: integer
+      unsigned: false
+      nullable: false
+    db:
+      type: integer
+      unsigned: false
+      nullable: false
+    users:
+      type: integer
+      unsigned: false
+      nullable: false
+  lifecycleCallbacks: {  }

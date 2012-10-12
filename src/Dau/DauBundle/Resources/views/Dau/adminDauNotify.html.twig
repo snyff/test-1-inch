@@ -1,0 +1,75 @@
+{% 
+    set raioane = {'0': '---', '1': 'Centru', '2': 'Riscani', '3': 'Ciocana', '4': 'Buiucani', '5': 'Botanica', '6': 'Posta Veche', '7': 'Telecentru', '8': 'Aeroport', '9': 'Sculeni', '10': 'Durlesti' }
+%}
+A fost postat un nou anunt pe inchiriere.md. Detalii:
+<br />
+<br />
+<table>
+    <tr>
+        <td>
+            Titlu:
+        </td>
+        <td>
+            {{ dau_details.title }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Continut:
+        </td>
+        <td>
+            {{ dau_details.content|nl2br|raw }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Pret:
+        </td>
+        <td>
+            {{ dau_details.price }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Adresa:
+        </td>
+        <td>
+            Chisinau ({{ raioane[dau_details.raion] }}), {{ dau_details.address }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Contacte:
+        </td>
+        <td>
+            {% if dau_details.fix %}
+                <span style="font-size: 15px">22</span> {{ dau_details.fix }}
+                &nbsp;
+                <span class="price_span">|</span>&nbsp;
+            {% endif %}
+            {{ dau_details.mobil }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Fotografii:
+        </td>
+        <td>
+            {% for item in photos %}
+                <img src="http://inchiriere.md/uploads/th_{{ item.getPhotoPath }}">
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Operatii:
+        </td>
+        <td>
+            <a href="http://inchiriere.md{{ path('DauDauBundle_accept_ann_admin') }}?hash={{ dau_details.getSecretHash }}ahtr&type=accept">Accepta</a>
+            <br />
+            <a href="http://inchiriere.md{{ path('DauDauBundle_accept_ann_admin') }}?hash={{ dau_details.getSecretHash }}ahtr&type=delete">Sterge</a>
+        </td>
+    </tr>
+</table>
+
+    

@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+{% block homepage_middle%}{% endblock %}
+{% block homepage_search%}{% endblock %}
+{% block homepage_last_announcements%}{% endblock %}
+{% block main_block %}
+    <div class="sep"></div>
+    <a href="javascript:;" onclick="history.back();return false;"><< Inapoi</a>
+    <div class="sep"></div>
+    <div class="sep"></div>
+    <h1 class="left">{{ inchiriez_details.title|stripslashes }}</h1>
+    <div class="font12 italic right textRight">
+        {{ inchiriez_details.added|date('Y-m-d H:i:s') }}
+    </div>
+    <div class="sep"></div>
+    <div class="ann_body">
+        {{ inchiriez_details.annonce|nl2br|raw|stripslashes }}
+    </div>
+    <div class="sep"></div>
+    <span class="price_span bold">contacte:</span> <span class="bold black font20">
+        {% if inchiriez_details.fix %}
+            <span style="font-size: 15px">22</span> {{ inchiriez_details.fix }}
+            &nbsp;
+            <span class="price_span">|</span>&nbsp;
+        {% endif %}
+        {{ inchiriez_details.mobil }}
+    </span>
+{% endblock %}

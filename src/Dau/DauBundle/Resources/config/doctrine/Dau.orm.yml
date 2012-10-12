@@ -1,0 +1,98 @@
+Dau\DauBundle\Entity\Dau:
+  type: entity
+  table: dau
+  repositoryClass: Dau\DauBundle\Repository\DauRepository
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    title:
+      type: string
+      length: 200
+      fixed: false
+      nullable: false
+    content:
+      type: text
+      nullable: false
+    nrRooms:
+      type: integer
+      unsigned: false
+      nullable: false
+      column: nr_rooms
+    floor:
+      type: integer
+      unsigned: false
+      nullable: false
+    price:
+      type: integer
+      unsigned: false
+      nullable: false
+    fix:
+      type: string
+      length: 11
+      fixed: false
+      nullable: true
+    mobil:
+      type: string
+      length: 11
+      fixed: false
+      nullable: false
+    email:
+      type: string
+      length: 60
+      fixed: false
+      nullable: false
+    added:
+      type: datetime
+      nullable: false
+    raion:
+      type: integer
+      unsigned: false
+      nullable: false
+    acceptStatus:
+      type: string
+      length: 1
+      fixed: false
+      nullable: false
+      column: accept_status
+    isAgency:
+      type: integer
+      unsigned: false
+      nullable: false
+      column: is_agency
+    address:
+      type: string
+      length: 250
+      fixed: false
+      nullable: false
+    m2:
+      type: string
+      length: 5
+      fixed: false
+      nullable: true
+    nrFloors:
+      type: integer
+      unsigned: false
+      nullable: false
+      column: nr_floors
+    secretHash:
+      type: string
+      length: 50
+      fixed: false
+      nullable: false
+      column: secret_hash
+    lat:
+      type: string
+      length: 15
+      fixed: false
+      nullable: true
+    llong:
+      type: string
+      length: 15
+      fixed: false
+      nullable: true
+  lifecycleCallbacks: {  }

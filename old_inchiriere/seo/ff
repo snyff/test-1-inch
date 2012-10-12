@@ -1,0 +1,12 @@
+{\"start_time\":1346070861,\"end_time\":1346080090,\"interval\":\"2\",\"cnt_keywords\":10,\"nr_requests_made\":4000,\"host_name\":\"home\",\"test_id\":\"4\"}
+===================================================
+stdClass Object
+(
+    [start_time] => 1346070861
+    [end_time] => 1346080090
+    [interval] => 2
+    [cnt_keywords] => 10
+    [nr_requests_made] => 4000
+    [host_name] => home
+    [test_id] => 4
+)
