@@ -236,6 +236,8 @@ class DefaultController extends Controller {
             return $this->redirect($this->generateUrl('AdminAdminBundle_login'));
         }
         
+        $id_arr = $id_arr_black = array();
+        
         $em = $this->getDoctrine()->getEntityManager();
         $ids = $em->getRepository('DauDauBundle:Adm')->get999Ids();
         
