@@ -245,5 +245,31 @@ class DefaultController extends Controller {
         
         return $this->render('AdminAdminBundle:Default:ann_999.html.twig', array('ann' => $ann));
     }
+    
+    protected function checkBlackList999($username, $phones) {
+        
+    }
+    
+    public function addAnn999Action() {
+        if (!Auth::isAuth()) {
+            return $this->redirect($this->generateUrl('AdminAdminBundle_login'));
+        }
+        $ann_data = array();
+        $nine = new Nine();
+        
+        $ann_data['ann_id'] = $this->get('request')->request->get('id');
+        $ann_data['ann_title'] = $this->get('request')->request->get('title');
+        $ann_data['ann_desc'] = $this->get('request')->request->get('desc');
+        $ann_data['ann_price'] = $this->get('request')->request->get('price');
+        $ann_data['ann_date'] = $this->get('request')->request->get('date');
+        $ann_data['additional'] = $nine->getAnnData($ann_data['ann_id']);
+        
+        $black_list_data = $this->checkBlackList999($ann_data['additional']['username'], $ann_data['additional']['phones']);
+        echo '<pre>';print_r($ann_data);die;
+        
+        return $this->render('AdminAdminBundle:Default:add_ann_999.html.twig', array('ann_data' => $ann_data));
+    }
+    
+    
 
 }
