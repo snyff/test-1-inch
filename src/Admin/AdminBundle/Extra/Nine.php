@@ -31,7 +31,7 @@ class Nine {
         return $data;
     }
 
-    protected function __getAnnData($id) {
+    public function getAnnData($id) {
         $return = array();
         $data = $this->__request($this->details_url.$id);
         $dom_parser_html = new simple_html_dom($data);
