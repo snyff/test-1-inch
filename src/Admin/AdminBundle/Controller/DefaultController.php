@@ -239,21 +239,53 @@ class DefaultController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
         $ids = $em->getRepository('DauDauBundle:Adm')->get999Ids();
         
+        for($i=0;$i<count($ids);$i++) {
+            $id_arr[] = $ids[$i]['id_999'];
+        }
+        
+        $ids_black = $em->getRepository('DauDauBundle:Adm')->get999BlackIds();
+        for($i=0;$i<count($ids_black);$i++) {
+            $id_arr_black[] = $ids_black[$i]['id_999'];
+        }
+        
         $nine = new Nine();
-        $ann = $nine->getAnnouncements($ids);
-//        echo '<pre>';print_r($ann);die;
+        $ann = $nine->getAnnouncements(array_merge($id_arr, $id_arr_black));
         
         return $this->render('AdminAdminBundle:Default:ann_999.html.twig', array('ann' => $ann));
     }
     
     protected function checkBlackList999($username, $phones) {
-        
+        $em = $this->getDoctrine()->getEntityManager();
+        $is_black_listed = $em->getRepository('DauDauBundle:Adm')->checkBlackListed999($username, $phones);
+        return $is_black_listed;
     }
     
     public function addAnn999Action() {
         if (!Auth::isAuth()) {
             return $this->redirect($this->generateUrl('AdminAdminBundle_login'));
         }
+        
+        if($this->get('request')->request->get('save_ann')) {
+            $params = array();
+            $params['title'] = "'".$this->get('request')->request->get('title')."'";
+            $params['content'] = "'".$this->get('request')->request->get('desc')."'";
+            $params['price'] = "'".$this->get('request')->request->get('price')."'";
+            $params['address'] = "'".$this->get('request')->request->get('address')."'";
+            $params['nr_rooms'] = "'".$this->get('request')->request->get('nr_rooms')."'";
+            $params['floor'] = "'".$this->get('request')->request->get('floor')."'";
+            $params['fix'] = "'".$this->get('request')->request->get('fix')."'";
+            $params['mobil'] = "'".$this->get('request')->request->get('mobil')."'";
+            $params['added'] = "'".$this->get('request')->request->get('date')."'";
+            $params['id_999'] = "'".$this->get('request')->request->get('id')."'";
+            $params['raion'] = "'".$this->get('request')->request->get('sector')."'";
+            $params['accept_status'] = "'a'";
+            
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->getRepository('DauDauBundle:Adm')->create999ann($params);
+            $this->get('session')->setFlash('notice', 'Anuntul a fost adaugat');
+            return $this->redirect($this->generateUrl('AdminAdminBundle_999_list'));
+        }
+        
         $ann_data = array();
         $nine = new Nine();
         
@@ -263,11 +295,35 @@ class DefaultController extends Controller {
         $ann_data['ann_price'] = $this->get('request')->request->get('price');
         $ann_data['ann_date'] = $this->get('request')->request->get('date');
         $ann_data['additional'] = $nine->getAnnData($ann_data['ann_id']);
+        if($ann_data['additional']['address']) {
+            $ann_data['additional']['address'] = preg_replace('/^, /', '', $ann_data['additional']['address']);
+        }
         
-        $black_list_data = $this->checkBlackList999($ann_data['additional']['username'], $ann_data['additional']['phones']);
-        echo '<pre>';print_r($ann_data);die;
+        $is_black_listed = $this->checkBlackList999($ann_data['additional']['username'], $ann_data['additional']['phones']);
+//        echo '<pre>';print_r($ann_data);die;
         
-        return $this->render('AdminAdminBundle:Default:add_ann_999.html.twig', array('ann_data' => $ann_data));
+        return $this->render('AdminAdminBundle:Default:add_ann_999.html.twig', array('ann_data' => $ann_data, 'is_black_listed' => $is_black_listed));
+    }
+    
+    public function deleteAnn999Action() {
+        if (!Auth::isAuth()) {
+            return $this->redirect($this->generateUrl('AdminAdminBundle_login'));
+        }
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        switch($this->get('request')->query->get('delete_by')) {
+            case 'id':
+                $em->getRepository('DauDauBundle:Adm')->delete999annById(array('id_999' => $this->get('request')->query->get('deleted_id')));
+                break;
+            case 'phone':
+                $em->getRepository('DauDauBundle:Adm')->delete999annById(array('phone' => $this->get('request')->query->get('phone')));
+                break;
+            case 'username':
+                $em->getRepository('DauDauBundle:Adm')->delete999annById(array('user_999' => $this->get('request')->query->get('username')));
+                break;
+        }
+        $this->get('session')->setFlash('notice', 'Anuntul a fost sters');
+        return $this->redirect($this->generateUrl('AdminAdminBundle_999_list'));
     }
     
     
