@@ -5,6 +5,13 @@
     {% include 'AdminAdminBundle:Default:_extern_ann.html.twig' %}
     <h1>Anunturi 999</h1>
     <div class="sep"></div>
+    <form method="post" action="" id="form_999">
+        <input type="hidden" name="id" id="id" value="">
+        <input type="hidden" name="title" id="title" value="">
+        <input type="hidden" name="desc" id="desc" value="">
+        <input type="hidden" name="price" id="price" value="">
+        <input type="hidden" name="date" id="date" value="">
+    </form>
     <table class="table table-hover" cellpadding="0" cellspacing="0">
         <tr>
             <th>
@@ -27,7 +34,7 @@
             </th>
         </tr>
         {% for item in ann %}
-            <tr>
+            <tr class="ss">
                 <td>
                     <span style="font-size: 11px;" class="ann_id">{{ item.id }}</span>
                 </td>
@@ -51,7 +58,7 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="" onclick="return confirm('Confirmati?')"><i class="icon-plus"></i>&nbsp;Add</a></li>
+                                <li><a href="javascript:;" onclick="populateForm(this);jQuery('#form_999').attr('action', '{{ path('AdminAdminBundle_add_999_ann') }}');jQuery('#form_999').submit();"><i class="icon-plus"></i>&nbsp;Add</a></li>
                                 <li><a href="" onclick="return confirm('Confirmati?')"><i class="icon-zoom-in"></i>&nbsp;Check user/phone</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{ path('AdminAdminBundle_delete_contacts') }}?contact_id={{ item.id }}" onclick="return confirm('Confirmati?')"><i class="icon-trash"></i>&nbsp;Delete</a></li>
@@ -62,4 +69,14 @@
             </tr>
         {% endfor %}
     </table>
+    <script>
+        function populateForm(obj) {
+            var parent = jQuery(obj).parent().parent().parent().parent().parent().parent();
+            jQuery('#id').val(parent.find('.ann_id').text());
+            jQuery('#title').val(parent.find('.ann_title').text());
+            jQuery('#desc').val(parent.find('.ann_desc').text());
+            jQuery('#price').val(parent.find('.ann_price').text());
+            jQuery('#date').val(parent.find('.ann_date').text());
+        }
+    </script>
 {% endblock %}
