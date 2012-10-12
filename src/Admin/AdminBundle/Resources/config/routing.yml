@@ -63,6 +63,11 @@ AdminAdminBundle_999_list:
     pattern:  /administrator/999-list
     defaults: { _controller: AdminAdminBundle:Default:list999 }
 
+AdminAdminBundle_add_999_ann:
+    pattern:  /administrator/add-999-ann
+    defaults: { _controller: AdminAdminBundle:Default:addAnn999 }
+
+### makler ###
 AdminAdminBundle_makler_list:
     pattern:  /administrator/makler-list
     defaults: { _controller: AdminAdminBundle:Default:listMakler }
