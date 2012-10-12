@@ -59,9 +59,8 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:;" onclick="populateForm(this);jQuery('#form_999').attr('action', '{{ path('AdminAdminBundle_add_999_ann') }}');jQuery('#form_999').submit();"><i class="icon-plus"></i>&nbsp;Add</a></li>
-                                <li><a href="" onclick="return confirm('Confirmati?')"><i class="icon-zoom-in"></i>&nbsp;Check user/phone</a></li>
                                 <li class="divider"></li>
-                                <li><a href="{{ path('AdminAdminBundle_delete_contacts') }}?contact_id={{ item.id }}" onclick="return confirm('Confirmati?')"><i class="icon-trash"></i>&nbsp;Delete</a></li>
+                                <li><a href="{{ path('AdminAdminBundle_delete_999_ann') }}?delete_by=id&deleted_id={{ item.id }}" onclick="return confirm('Confirmati?')"><i class="icon-trash"></i>&nbsp;Delete</a></li>
                             </ul>
                         </li>
                     </ul>
