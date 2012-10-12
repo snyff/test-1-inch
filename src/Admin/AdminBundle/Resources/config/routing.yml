@@ -67,6 +67,10 @@ AdminAdminBundle_add_999_ann:
     pattern:  /administrator/add-999-ann
     defaults: { _controller: AdminAdminBundle:Default:addAnn999 }
 
+AdminAdminBundle_delete_999_ann:
+    pattern:  /administrator/delete-999-ann
+    defaults: { _controller: AdminAdminBundle:Default:deleteAnn999 }
+
 ### makler ###
 AdminAdminBundle_makler_list:
     pattern:  /administrator/makler-list
