@@ -83,9 +83,10 @@ class Nine {
         
         $json = json_decode($data, true);
         $json = $json['page'];
+        
         $cnt = count($json);
         for ($i = 0; $i < $cnt; $i++) {
-            $json[$i]['date'] = substr($json[$i]['date'], 0, strlen($json[$i]['date'])-3);
+            $json[$i]['date'] = substr(str_replace('.', '', $json[$i]['date']), 0, 10);
             if(date('Ymd', $json[$i]['date']) != date('Ymd')) {
                 unset($json[$i]);
             } elseif($json[$i]['currency'] != 'EUR') {
