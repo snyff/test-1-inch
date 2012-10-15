@@ -78,7 +78,7 @@ class WebsiteExtension extends \Twig_Extension {
 
     public function truncate($sentence, $start, $end, $concat = null) {
         if(\strlen($sentence)>=$end) {
-            $return = substr($sentence, $start, $end).$concat;
+            $return = mb_substr($sentence, $start, $end, 'utf-8').$concat;
         } else {
             $return = $sentence;
         }
