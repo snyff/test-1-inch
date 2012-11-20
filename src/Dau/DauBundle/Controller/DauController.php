@@ -27,7 +27,6 @@ class DauController extends Controller {
         'sculeni' => '9',
         'durlesti' => '10',
     );
-    
     protected $sectoare = array(
         1 => 'Centru',
         2 => 'Riscani',
@@ -40,7 +39,7 @@ class DauController extends Controller {
         9 => 'Sculeni',
         10 => 'Durlesti',
     );
-    
+
     private function getCurrentRouting() {
         $request = $this->container->get('request');
         $routeName = $request->get('_route');
@@ -53,20 +52,22 @@ class DauController extends Controller {
      */
     private function isMobileRouting() {
         $routeName = $this->getCurrentRouting();
-        return (substr($routeName, strlen($routeName)-6, strlen($routeName)) == 'mobile');
+        return (substr($routeName, strlen($routeName) - 6, strlen($routeName)) == 'mobile');
     }
-    
+
     private function getTemplate($twig, $twig_mobile, $twig_variables = array(), $routing_mobile = false) {
-        if(@$_COOKIE['use_normal_site']) { // if the user clicked on "Use normal site"
+        if (@$_COOKIE['use_normal_site']) { // if the user clicked on "Use normal site"
             return $this->render($twig, $twig_variables);
         }
+        $this->aboutAction();
+
         $mobile_detector = new Mobile_Detect();
-        if($mobile_detector->isMobile()) {
-            if($this->isMobileRouting()) { // if is mobile render mobile template
+        if ($mobile_detector->isMobile()) {
+            if ($this->isMobileRouting()) { // if is mobile render mobile template
                 return $this->render($twig_mobile, $twig_variables);
             } else { // if not redirect to the same mobile routing
-                if(!$routing_mobile) {
-                    $routing_mobile = $this->getCurrentRouting().'_mobile';
+                if (!$routing_mobile) {
+                    $routing_mobile = $this->getCurrentRouting() . '_mobile';
                 }
                 return $this->redirect($this->generateUrl($routing_mobile));
             }
@@ -74,7 +75,7 @@ class DauController extends Controller {
             return $this->render($twig, $twig_variables);
         }
     }
-    
+
     public function homepageAction() {
         $seo = array();
         $em = $this->getDoctrine()->getEntityManager();
@@ -89,7 +90,7 @@ class DauController extends Controller {
         $seo['page_title'] = 'Inchiriere.md - apartamente in chirie Chisinau, gazda chisinau';
         $seo['keywords'] = 'gazda md, gazda chisinau, apartamente in chirie chisinau, cauti gazda chisinau?';
         $seo['description'] = 'Inchiriere.md este un portal care vine in ajutorul celor care cauta gazda in Chisinau sau doresc sa ofere in chirie apartamente in Chisinau.';
-        
+
         return $this->getTemplate('DauDauBundle:Default:index.html.twig', 'DauDauBundle:Mobile:index.html.twig', array('paginator' => $latest_dau, 'seo' => $seo), 'DauDauBundle_dauAnnouncements_mobile');
     }
 
@@ -97,17 +98,17 @@ class DauController extends Controller {
         $dau_details = $this->getDoctrine()->getEntityManager()->getRepository('DauDauBundle:Dau')->getDauSingle($id);
         $photos = $this->getDoctrine()->getEntityManager()->getRepository('DauDauBundle:Dau')->getPhotos($id);
 
-        if(empty($dau_details)) {
+        if (empty($dau_details)) {
             $this->get('session')->setFlash('notice', 'Anuntul a expirat');
             return $this->redirect($this->generateUrl('DauDauBundle_dauAnnouncements'), 301);
         }
         $aux = array_flip($this->sectoare_slug);
         $sector_slug = $aux[$dau_details->getRaion()];
 
-        $seo['page_title'] = 'gazda cu ' . $dau_details->getNrRooms() . ' camere ' . $this->sectoare[$dau_details->getRaion()] . ', Chisinau, '.$dau_details->getAddress();
+        $seo['page_title'] = 'gazda cu ' . $dau_details->getNrRooms() . ' camere ' . $this->sectoare[$dau_details->getRaion()] . ', Chisinau, ' . $dau_details->getAddress();
         $seo['keywords'] = '';
         $seo['description'] = $dau_details->getContent();
-        $seo['breadcrumb'] = '<a href="'.$this->generateUrl('DauDauBundle_homepage').'">Acasa</a> > <a href="'.$this->generateUrl('DauDauBundle_dau_list_SEO_sector', array('sector' => $sector_slug)).'">gazda ' . $this->sectoare[$dau_details->getRaion()] . '</a> > '.$dau_details->getTitle();
+        $seo['breadcrumb'] = '<a href="' . $this->generateUrl('DauDauBundle_homepage') . '">Acasa</a> > <a href="' . $this->generateUrl('DauDauBundle_dau_list_SEO_sector', array('sector' => $sector_slug)) . '">gazda ' . $this->sectoare[$dau_details->getRaion()] . '</a> > ' . $dau_details->getTitle();
 
         return $this->getTemplate('DauDauBundle:Dau:annDetails.html.twig', 'DauDauBundle:Mobile:annDetails.html.twig', array('dau_details' => $dau_details, 'photos' => $photos, 'seo' => $seo));
     }
@@ -118,7 +119,7 @@ class DauController extends Controller {
     }
 
     private function __sendSecretEmail($email, $secret_hash) {
-        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
         $headers .= 'From: Inchiriere.md <no-replay@inchiriere.md>' . "\r\n";
 
@@ -135,8 +136,8 @@ class DauController extends Controller {
     }
 
     private function __sendContactEmail($emails) {
-        
-        $headers  = 'MIME-Version: 1.0' . "\r\n";
+
+        $headers = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
         $headers .= 'From: Inchiriere.md <contacts@inchiriere.md>' . "\r\n";
 
@@ -153,7 +154,7 @@ class DauController extends Controller {
     }
 
     private function __notifyAdministrators($emails, $ann_data, $photos) {
-        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
         $headers .= 'From: Inchiriere.md <no-replay@inchiriere.md>' . "\r\n";
 
@@ -175,7 +176,7 @@ class DauController extends Controller {
             $this->getDoctrine()->getEntityManager()->getRepository('DauDauBundle:Dau')->deleteDauByHash($secret_hash);
             return $this->render('DauDauBundle:Default:thankYou.html.twig', array('message' => 'secret_hash_deleted'));
         }
-        $ann = $this->getDoctrine()->getEntityManager()->getRepository('DauDauBundle:Dau')->findOneBy(array('secret_hash' => $secret_hash));
+        $ann = $this->getDoctrine()->getEntityManager()->getRepository('DauDauBundle:Dau')->findOneBy(array('secretHash' => $secret_hash));
         return $this->render('DauDauBundle:Dau:confirmDeleteDau.html.twig', array('ann' => $ann, 'found' => !empty($ann)));
     }
 
@@ -322,20 +323,20 @@ class DauController extends Controller {
                 $page_title = 'gazda 1 camera ' . $this->sectoare[$search['raion']] . ', apartamente cu ' . $search['nr_rooms'] . ' odaie ' . $this->sectoare[$search['raion']];
                 $description = 'cauti gazda cu 1 camera la ' . $this->sectoare[$search['raion']] . '? apartament ' . $this->sectoare[$search['raion']] . ' 1 odaie, gazda Chisinau ' . $this->sectoare[$search['raion']] . ' 1 odaie';
                 $keywords = 'gazda 1 camera, ' . $this->sectoare[$search['raion']] . ', apartament 1 odaie, apartament ' . $this->sectoare[$search['raion']];
-                $breadcrumb = '<a href="'.$this->generateUrl('DauDauBundle_homepage').'">Acasa</a> > <a href="'.$this->generateUrl('DauDauBundle_dau_list_SEO_sector', array('sector' => $sector_slug)).'">gazda ' . $this->sectoare[$search['raion']] . '</a> > ' . $this->sectoare[$search['raion']] . ' 1 camera';
+                $breadcrumb = '<a href="' . $this->generateUrl('DauDauBundle_homepage') . '">Acasa</a> > <a href="' . $this->generateUrl('DauDauBundle_dau_list_SEO_sector', array('sector' => $sector_slug)) . '">gazda ' . $this->sectoare[$search['raion']] . '</a> > ' . $this->sectoare[$search['raion']] . ' 1 camera';
             } else {
                 $h1_search_title = 'apartamente cu ' . $search['nr_rooms'] . ' camere ' . $this->sectoare[$search['raion']] . ' Chisinau';
                 $page_title = 'gazda ' . $search['nr_rooms'] . ' camere ' . $this->sectoare[$search['raion']] . ', apartamente cu ' . $search['nr_rooms'] . ' odai ' . $this->sectoare[$search['raion']];
                 $description = 'cauti gazda cu ' . $search['nr_rooms'] . ' camere la ' . $this->sectoare[$search['raion']] . '? apartament ' . $this->sectoare[$search['raion']] . ' ' . $search['nr_rooms'] . ' odai, gazda Chisinau ' . $this->sectoare[$search['raion']] . ' ' . $search['nr_rooms'] . ' odai';
                 $keywords = 'gazda ' . $search['nr_rooms'] . ' camere, ' . $this->sectoare[$search['raion']] . ', apartament ' . $search['nr_rooms'] . ' odai, apartament ' . $this->sectoare[$search['raion']];
-                $breadcrumb = '<a href="'.$this->generateUrl('DauDauBundle_homepage').'">Acasa</a> > <a href="'.$this->generateUrl('DauDauBundle_dau_list_SEO_sector', array('sector' => $sector_slug)).'">gazda ' . $this->sectoare[$search['raion']] . '</a> > ' . $this->sectoare[$search['raion']] . ' ' . $search['nr_rooms'] . ' camere';
+                $breadcrumb = '<a href="' . $this->generateUrl('DauDauBundle_homepage') . '">Acasa</a> > <a href="' . $this->generateUrl('DauDauBundle_dau_list_SEO_sector', array('sector' => $sector_slug)) . '">gazda ' . $this->sectoare[$search['raion']] . '</a> > ' . $this->sectoare[$search['raion']] . ' ' . $search['nr_rooms'] . ' camere';
             }
         } elseif ($search['raion']) { // daca e setat numai sectorul
             $page_title = 'gazda ' . $this->sectoare[$search['raion']] . ', apartament ' . $this->sectoare[$search['raion']] . ', cauti gazda la ' . $this->sectoare[$search['raion']] . '?';
             $h1_search_title = 'Apartamente ' . $this->sectoare[$search['raion']] . ' Chisinau';
             $description = 'cauti apartament la ' . $this->sectoare[$search['raion']] . '? gazda la ' . $this->sectoare[$search['raion']] . ' odai, ' . $search['nr_rooms'] . ' chirie';
             $keywords = 'gazda ' . $this->sectoare[$search['raion']] . ', apartamente ' . $this->sectoare[$search['raion']] . ' chirie, caut gazda ' . $this->sectoare[$search['raion']];
-            $breadcrumb = '<a href="'.$this->generateUrl('DauDauBundle_homepage').'">Acasa</a> > gazda ' . $this->sectoare[$search['raion']];
+            $breadcrumb = '<a href="' . $this->generateUrl('DauDauBundle_homepage') . '">Acasa</a> > gazda ' . $this->sectoare[$search['raion']];
             $canonical = $this->generateUrl('DauDauBundle_dau_list_SEO_sector', array('sector' => $sector_slug));
         } elseif ($search['nr_rooms']) {
             if ($search['nr_rooms'] == 1) {
@@ -343,13 +344,13 @@ class DauController extends Controller {
                 $page_title = 'gazda cu ' . $search['nr_rooms'] . ' camera, apartamente cu ' . $search['nr_rooms'] . ' camera, chirie ' . $search['nr_rooms'] . ' odaie';
                 $description = 'cauti gazda cu ' . $search['nr_rooms'] . ' camera?, apartamente cu ' . $search['nr_rooms'] . ' odaie, gazda chisinau ' . $search['nr_rooms'] . ' camera';
                 $keywords = 'gazda 1 camera, apartamente 1 odaie, chirie 1 camera';
-                $breadcrumb = '<a href="'.$this->generateUrl('DauDauBundle_homepage').'">Acasa</a> > 1 camera';
+                $breadcrumb = '<a href="' . $this->generateUrl('DauDauBundle_homepage') . '">Acasa</a> > 1 camera';
             } else {
                 $page_title = 'gazda cu ' . $search['nr_rooms'] . ' camere, apartamente cu ' . $search['nr_rooms'] . ' camere, chirie ' . $search['nr_rooms'] . ' odai';
                 $h1_search_title = 'Apartamente cu ' . $search['nr_rooms'] . ' camere Chisinau';
                 $description = 'cauti gazda cu ' . $search['nr_rooms'] . ' camere?, apartamente cu ' . $search['nr_rooms'] . ' odai, gazda chisinau ' . $search['nr_rooms'] . ' camere';
                 $keywords = 'gazda ' . $search['nr_rooms'] . ' camere, apartamente ' . $search['nr_rooms'] . ' odai, chirie ' . $search['nr_rooms'] . ' camere';
-                $breadcrumb = '<a href="'.$this->generateUrl('DauDauBundle_homepage').'">Acasa</a> > ' . $search['nr_rooms'] . ' camere';
+                $breadcrumb = '<a href="' . $this->generateUrl('DauDauBundle_homepage') . '">Acasa</a> > ' . $search['nr_rooms'] . ' camere';
             }
             $canonical = $this->generateUrl('DauDauBundle_dau_list_SEO_camere', array('camere' => $search['nr_rooms']));
         } else {
@@ -357,7 +358,7 @@ class DauController extends Controller {
             $h1_search_title = 'Ultimile anunturi "dau in chirie"';
             $description = 'cauti gazda in Chisinau? Gasesti oferte aici: apartamente in chirie, gazda chisinau, gazda md';
             $keywords = 'gazda md, gazda in chisinau, apartamente in chirie, gazda chisinau, chirie chisinau';
-            $breadcrumb = '<a href="'.$this->generateUrl('DauDauBundle_homepage').'">Acasa</a> > gazda chisinau';
+            $breadcrumb = '<a href="' . $this->generateUrl('DauDauBundle_homepage') . '">Acasa</a> > gazda chisinau';
             $canonical = $this->generateUrl($this->getCurrentRouting());
         }
 
@@ -404,7 +405,7 @@ class DauController extends Controller {
             if ($this->get('request')->query->get('search')) {
                 $sign = '&';
             } else {
-                if($query_string) {
+                if ($query_string) {
                     $sign = '?';
                 } else {
                     $sign = '';
@@ -497,7 +498,7 @@ class DauController extends Controller {
     public function sitemapAction() {
         $em = $this->getDoctrine()->getEntityManager();
         $response = new \Symfony\Component\HttpFoundation\Response();
-        
+
         $xml_list = array();
         $response->headers->set('Content-Type', 'text/xml');
         /**
@@ -542,13 +543,13 @@ class DauController extends Controller {
         }
         return $this->render('DauDauBundle:Default:sitemap.html.twig', array('items' => $xml_list), $response);
     }
-    
+
     public function pages410Action() {
 //        $response = new \Symfony\Component\HttpFoundation\Response();
 //        $response->headers->set('Content-Type', 'text/xml');
         return $this->redirect($this->generateUrl('DauDauBundle_homepage'), 301);
     }
-    
+
     public function useNormalSiteAction() {
         setcookie('use_normal_site', true, time() + 60 * 60 * 24 * 30 * 2, '/');
         return $this->redirect($this->generateUrl('DauDauBundle_homepage'));
