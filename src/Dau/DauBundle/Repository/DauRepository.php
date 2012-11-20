@@ -61,7 +61,7 @@ class DauRepository extends EntityRepository {
     public function deleteDauByHash($secret_hash) {
         $this->createQueryBuilder('d')
                 ->delete()
-                ->where('d.secret_hash=:secret_hash')
+                ->where('d.secretHash=:secret_hash')
                 ->setParameters(array('secret_hash'=>$secret_hash))
                 ->getQuery()->execute();
     }
